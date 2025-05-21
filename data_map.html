@@ -1,0 +1,190 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Offline Data Map with Split Sidebar</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <style>
+    body { margin: 0; display: flex; font-family: sans-serif; }
+    #map { height: 100vh; width: 75%; }
+    #sidebar {
+      width: 25%; padding: 10px; overflow-y: auto;
+      background: #f7f7f7; border-left: 1px solid #ccc;
+    }
+    .entry { margin-bottom: 15px; }
+    .entry-title { font-weight: bold; }
+    h3 { margin-top: 20px; border-bottom: 1px solid #ccc; padding-bottom: 5px; }
+  </style>
+</head>
+<body>
+
+<div id="map"></div>
+<div id="sidebar">
+  <h2>Global & Regional Datasets</h2>
+
+  <h3>🌍 Global</h3>
+  <div id="global-data"></div>
+
+  <h3>🌐 Regional</h3>
+  <div id="regional-data"></div>
+</div>
+
+<script>
+  const map = L.map('map').setView([20, 0], 2);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© OpenStreetMap contributors'
+  }).addTo(map);
+
+  const countryCoords = {
+    Germany: [52.52, 13.405],
+    Ethiopia: [9.03, 38.74],
+    France: [48.85, 2.35],
+    Turkey: [39.0, 35.0],
+    Brazil: [-10.0, -55.0],
+    "United States": [38.9, -77.04],
+    "United Kingdom": [51.5, -0.12],
+    Netherlands: [52.37, 4.90],
+    India: [28.61, 77.21],
+    Kenya: [-1.29, 36.82],
+    China: [39.90, 116.40],
+    Turkey: [39.0, 35.0],
+    Brazil: [-10.0, -55.0]
+  };
+
+  const dataset = [
+    {
+      regionType: "Land",
+      country: "Turkey",
+      title: "Turkey - G20 climate risk report",
+      url: "https://files.cmcc.it/g20climaterisks/Turkey.pdf",
+      description: ""
+    },
+     {
+      regionType: "Land",
+      country: "Turkey",
+      title: "Building resilience in Turkey",
+      url: "https://openknowledge.worldbank.org/server/api/core/bitstreams/b687f23e-564a-51dd-9d92-4165e310b0c8/content",
+      description: "report published July 2019"
+    },
+   {
+      regionType: "Land",
+      country: "Brazil",
+      title: "Serviço Geológico do Brasil",
+      url: "https://geosgb.sgb.gov.br",
+      description: "flood susceptibility; geological risk"
+    },
+    {
+      regionType: "Land",
+      country: "Turkey",
+      title: "migration and population data",
+      url: "https://cip.tuik.gov.tr/",
+      description: "migration and population statistics"
+    },
+    {
+      regionType: "Land",
+      country: "Brazil",
+      title: "Vulnerability data",
+      url: "https://sistema.adaptabrasil.mcti.gov.br/",
+      description: "vulnerability (sensitivity + adaptive capacity); exposure; climate threat"
+    },
+    {
+      regionType: "Global",
+      country: "",
+      title: "Globale Reanalysedaten (ERA5)",
+      url: "https://cds.climate.copernicus.eu/cdsapp#!/dataset/reanalysis-era5-single-levels?tab=overview",
+      description: "global reanalysis data 1979–2023"
+    },
+    {
+      regionType: "Global",
+      country: "",
+      title: "EM-DAT",
+      url: "https://public.emdat.be/data",
+      description: "The International Disaster Database"
+    },
+    {
+      regionType: "Global",
+      country: "",
+      title: "Agrometeorological indicators",
+      url: "https://cds.climate.copernicus.eu/datasets/sis-agrometeorological-indicators?tab=overview",
+      description: "Agrometeorological indicators from 1979 to present derived from reanalysis"
+    },
+    {
+      regionType: "Global",
+      country: "",
+      title: "Global cropland expansion in the 21st century",
+      url: "https://glad.earthengine.app/view/global-cropland-dynamics#lon=31.688292536961814;lat=38.81792149816237;zoom=5",
+      description: "Global crop land dynamics"
+    },
+    {
+      regionType: "Global",
+      country: "",
+      title: "United Nations Global Migration Database",
+      url: "https://www.un.org/development/desa/pd/global-migration-database",
+      description: "migration statistics, survey"
+    },
+    {
+      regionType: "Global",
+      country: "",
+      title: "World Drought Atlas",
+      url: "https://publications.jrc.ec.europa.eu/repository/handle/JRC139691",
+      description: "report published 02/12/2024"
+    },    
+    {
+      regionType: "Global",
+      country: "",
+      title: "CRU TS version4",
+      url: "https://crudata.uea.ac.uk/cru/data/hrg/",
+      description: "Climatic Research Unit gridded Time Series; e.g., daily mean temperature (TMP); precipitation (PRE); monthly average daily maximum & minimum temperature (TMX, TMN); frost day frequency (FRS); wet day frequency (WET)"
+    },   
+    {
+      regionType: "Land",
+      country: "Brazil",
+      title: "Censo Demográfico",
+      url: "https://www.ibge.gov.br/estatisticas/sociais/trabalho/22827-censo-demografico-2022.html?=&t=microdados",
+      description: "Instituto Brasileiro de Geografia e Estatística (IBGE); Population (movement, education, family, migration, etc...); Household (type, size, surroundings, sanitation, income, poverty rate, etc...)"
+    },
+    {
+      regionType: "Europa",
+      country: "",
+      title: "European Drought Impact Database",
+      url: "https://drought.emergency.copernicus.eu/tumbo/edid/explore",
+      description: ""
+    }
+  ];
+
+  const countryData = {};
+  const globalData = [];
+  const regionalData = [];
+
+  dataset.forEach(row => {
+    const regionType = row.regionType.toLowerCase();
+    const country = row.country;
+    const htmlEntry = `<div class="entry">
+      <div class="entry-title"><a href="${row.url}" target="_blank">${row.title}</a></div>
+      <div class="entry-desc">${row.description}</div>
+    </div>`;
+
+    if (regionType === 'land' && countryCoords[country]) {
+      if (!countryData[country]) countryData[country] = [];
+      countryData[country].push(htmlEntry);
+    } else if (regionType === 'global') {
+      globalData.push(htmlEntry);
+    } else {
+      regionalData.push(htmlEntry);
+    }
+  });
+
+  for (const country in countryData) {
+    const popupHtml = `<b>${country}</b><br>` + countryData[country].join("");
+    L.marker(countryCoords[country]).addTo(map).bindPopup(popupHtml);
+  }
+
+  document.getElementById('global-data').innerHTML = globalData.join("");
+  document.getElementById('regional-data').innerHTML = regionalData.join("");
+</script>
+
+</body>
+</html>
