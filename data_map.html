@@ -57,41 +57,6 @@
 
   const dataset = [
     {
-      regionType: "Land",
-      country: "Turkey",
-      title: "Turkey - G20 climate risk report",
-      url: "https://files.cmcc.it/g20climaterisks/Turkey.pdf",
-      description: ""
-    },
-     {
-      regionType: "Land",
-      country: "Turkey",
-      title: "Building resilience in Turkey",
-      url: "https://openknowledge.worldbank.org/server/api/core/bitstreams/b687f23e-564a-51dd-9d92-4165e310b0c8/content",
-      description: "report published July 2019"
-    },
-   {
-      regionType: "Land",
-      country: "Brazil",
-      title: "Serviço Geológico do Brasil",
-      url: "https://geosgb.sgb.gov.br",
-      description: "flood susceptibility; geological risk"
-    },
-    {
-      regionType: "Land",
-      country: "Turkey",
-      title: "migration and population data",
-      url: "https://cip.tuik.gov.tr/",
-      description: "migration and population statistics"
-    },
-    {
-      regionType: "Land",
-      country: "Brazil",
-      title: "Vulnerability data",
-      url: "https://sistema.adaptabrasil.mcti.gov.br/",
-      description: "vulnerability (sensitivity + adaptive capacity); exposure; climate threat"
-    },
-    {
       regionType: "Global",
       country: "",
       title: "Global Reanalysis Data (ERA5)",
@@ -155,6 +120,83 @@
       description: "Climatic Research Unit gridded Time Series; e.g., daily mean temperature (TMP); precipitation (PRE); monthly average daily maximum & minimum temperature (TMX, TMN); frost day frequency (FRS); wet day frequency (WET)"
     },  
     {
+      regionType: "Europa",
+      country: "",
+      title: "European Drought Impact Database",
+      url: "https://drought.emergency.copernicus.eu/tumbo/edid/explore",
+      description: ""
+    },
+    {
+      regionType: "Asia",
+      country: "",
+      title: "CORDEX South Asia domain",
+      url: "https://cordex.org/domains/region-6-south-asia-2/",
+      description: "Coordinated Redional Downscaling Experiment data for the South Asia domain, gridded climate data including variables e.g., temperature, precipitation, wind (u- and v-component), geopotential, moisture, moisture transport, etc."
+    } 
+    {
+      regionType: "Land",
+      country: "Brazil",
+      title: "Serviço Geológico do Brasil",
+      url: "https://geosgb.sgb.gov.br",
+      description: "flood susceptibility; geological risk; available for 2023"
+    },
+    {
+      regionType: "Land",
+      country: "Brazil",
+      title: "Adapta Brazil (MCTI) Vulnerability data",
+      url: "https://sistema.adaptabrasil.mcti.gov.br/",
+      description: "vulnerability (sensitivity + adaptive capacity); exposure; climate threat; available for 2023"
+    },
+    {
+      regionType: "Land",
+      country: "Brazil",
+      title: "Censo Demográfico",
+      url: "https://www.ibge.gov.br/estatisticas/sociais/trabalho/22827-censo-demografico-2022.html?=&t=microdados",
+      description: "Instituto Brasileiro de Geografia e Estatística (IBGE); census data, every 10 years;  Population (movement, education, family, migration, etc...); Household (type, size, surroundings, sanitation, income, poverty rate, etc...)"
+    },
+    {
+      regionType: "Land",
+      country: "Brazil",
+      title: "PNAD - National Household Sample Survey",
+      url: "https://www.ibge.gov.br/estatisticas/sociais/trabalho/9127-pesquisa-nacional-por-amostra-de-domicilios.html",
+      description: "Instituto Brasileiro de Geografia e Estatística (IBGE); survey, every year;  Population (movement, education, family, migration, etc...); Household (type, size, surroundings, sanitation, income, poverty rate, etc...)"
+    },
+    {
+      regionType: "Land",
+      country: "Brazil",
+      title: "MUNIC - Survey of Basic Municipal Information",
+      url: "https://www.ibge.gov.br/estatisticas/sociais/educacao/10586-pesquisa-de-informacoes-basicas-municipais.html",
+      description: "Governance data: Manager profile (2021); Human resources (2021); Legislation and planning instruments (2021); Education (2021); Health (2021); Housing (2020); Transport (2020); Agriculture (2020); Environment (2020); sporadically available "
+    },
+    {
+      regionType: "Land",
+      country: "Brazil",
+      title: "IPEA IVS - Social Vulnerability Index",
+      url: "http://ivs.ipea.gov.br/",
+      description: "Instituto de Pesquisa Econômica Aplicada; Social Vulnerability Index (Infrastructure; Human capital; income and work); available every 10 years with census data"
+    },
+    {
+      regionType: "Land",
+      country: "Brazil",
+      title: "RAIS/CAGED at Programa de Disseminação das Estatísticas do Trabalho (PDET)",
+      url: "http://pdet.mte.gov.br/microdados-rais-e-caged",
+      description: "Programa de Disseminação das Estatísticas do Trabalho; Employment; Unemployment; CNAE; survey data available every year"
+    },
+    {
+      regionType: "Land",
+      country: "Brazil",
+      title: "STI/OBMIGRA/SISMIGRA",
+      url: "https://portaldeimigracao.mj.gov.br/pt/dados/microdados/1733-obmigra/dados/microdados/401206-sti",
+      description: "International emigration; International immigration; Refugees in Brazil (UF); available every year from 2010 (STI)"
+    },
+    {
+      regionType: "Land",
+      country: "Brazil",
+      title: "INMET",
+      url: "https://clima.inmet.gov.br/NormaisClimatologicas/1961-1990/precipitacao_acumulada_mensal_anual",
+      description: ""
+    },
+    {
       regionType: "Land",
       country: "Chile",
       title: "Chile IOM displacement tracking matrix",
@@ -170,25 +212,25 @@
     },
     {
       regionType: "Land",
-      country: "Brazil",
-      title: "Censo Demográfico",
-      url: "https://www.ibge.gov.br/estatisticas/sociais/trabalho/22827-censo-demografico-2022.html?=&t=microdados",
-      description: "Instituto Brasileiro de Geografia e Estatística (IBGE); Population (movement, education, family, migration, etc...); Household (type, size, surroundings, sanitation, income, poverty rate, etc...)"
-    },
-    {
-      regionType: "Europa",
-      country: "",
-      title: "European Drought Impact Database",
-      url: "https://drought.emergency.copernicus.eu/tumbo/edid/explore",
+      country: "Turkey",
+      title: "Turkey - G20 climate risk report",
+      url: "https://files.cmcc.it/g20climaterisks/Turkey.pdf",
       description: ""
     },
+     {
+      regionType: "Land",
+      country: "Turkey",
+      title: "Building resilience in Turkey",
+      url: "https://openknowledge.worldbank.org/server/api/core/bitstreams/b687f23e-564a-51dd-9d92-4165e310b0c8/content",
+      description: "report published July 2019"
+    },
     {
-      regionType: "Asia",
-      country: "",
-      title: "CORDEX South Asia domain",
-      url: "https://cordex.org/domains/region-6-south-asia-2/",
-      description: "Coordinated Redional Downscaling Experiment data for the South Asia domain, gridded climate data including variables e.g., temperature, precipitation, wind (u- and v-component), geopotential, moisture, moisture transport, etc."
-    }    
+      regionType: "Land",
+      country: "Turkey",
+      title: "migration and population data",
+      url: "https://cip.tuik.gov.tr/",
+      description: "migration and population statistics"
+    }   
   ];
 
   const countryData = {};
