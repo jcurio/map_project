@@ -51,7 +51,11 @@
     China: [39.90, 116.40],
     Turkey: [39.0, 35.0],
     Brazil: [-10.0, -55.0],
-    Chile: [-35.67, -71.54]
+    Chile: [-35.67, -71.54],
+    "South America": [-15.6014, -56.0979],
+    "Middle East North Africa": [24.5, 19.0],
+    Europe: [9.75, 49.68],
+    Mediterranean: [15.75, 43.02]  
   };
 
   const dataset = [
@@ -68,6 +72,13 @@
       title: "Coupled Model Intercomparison Project Phase 6 (CMIP6) data",
       url: "https://pcmdi.llnl.gov/CMIP6/",
       description: "climate data (e.g., temperature, precipitation, wind (u- and v-component), geopotential, moisture, moisture transport, etc.); historic and future model simulations by different models and for different scenarios"
+    },
+    {
+      regionType: "Global",
+      country: "",
+      title: "Coordinated Redional Downscaling Experiment (CORDEX) climate data ",
+      url: "https://cordex.org",
+      description: "gridded climate data for different regions/domains(e.g., temperature, precipitation, wind (u- and v-component), geopotential, moisture, moisture transport, etc.); historic and future regional model simulations by different models and for different scenarios"
     },
     {
       regionType: "Global",
@@ -154,12 +165,33 @@
       description: "public attitudes; survey data"
     },
     {
-      regionType: "Asia",
-      country: "",
-      title: "CORDEX South Asia domain",
-      url: "https://cordex.org/domains/region-6-south-asia-2/",
-      description: "Coordinated Redional Downscaling Experiment data for the South Asia domain, gridded climate data including variables e.g., temperature, precipitation, wind (u- and v-component), geopotential, moisture, moisture transport, etc."
+      regionType: "Land",
+      country: "South America",
+      title: "CORDEX South America domain",
+      url: "https://cds.climate.copernicus.eu/datasets/projections-cordex-domains-single-levels?tab=overview",
+      description: "Coordinated Redional Downscaling Experiment data for the South America domain (https://cordex.org/domains/cordex-region-south-america-cordex/), gridded climate data including variables e.g., temperature, precipitation, wind (u- and v-component), geopotential, moisture, moisture transport, etc."
     }, 
+    {
+      regionType: "Land",
+      country: "Middle East North Africa",
+      title: "CORDEX Middle East North Africa domain",
+      url: "https://cds.climate.copernicus.eu/datasets/projections-cordex-domains-single-levels?tab=overview",
+      description: "Coordinated Redional Downscaling Experiment data for the Middle East North Africa domain (https://cordex.org/domains/cordexregion-mena-cordex/), gridded climate data including variables e.g., temperature, precipitation, wind (u- and v-component), geopotential, moisture, moisture transport, etc."
+    }, 
+    {
+      regionType: "Land",
+      country: "Europe",
+      title: "CORDEX Europe domain",
+      url: "https://cds.climate.copernicus.eu/datasets/projections-cordex-domains-single-levels?tab=overview",
+      description: "Coordinated Redional Downscaling Experiment data for the Europe (EURO) domain (https://cordex.org/domains/cordex-region-euro-cordex/), gridded climate data including variables e.g., temperature, precipitation, wind (u- and v-component), geopotential, moisture, moisture transport, etc."
+    }, 
+    {
+      regionType: "Land",
+      country: "Mediterranean",
+      title: "CORDEX Mediterranean domain",
+      url: "https://cds.climate.copernicus.eu/datasets/projections-cordex-domains-single-levels?tab=overview",
+      description: "Coordinated Redional Downscaling Experiment data for the Mediterranean (MED) domain (https://cordex.org/domains/region-12-mediterranean/), gridded climate data including variables e.g., temperature, precipitation, wind (u- and v-component), geopotential, moisture, moisture transport, etc."
+    },
     {
       regionType: "Land",
       country: "Brazil",
